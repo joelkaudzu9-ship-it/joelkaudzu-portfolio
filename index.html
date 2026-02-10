@@ -20,22 +20,22 @@
     <div class="chatbot-container">
         <div class="chatbot-header">
             <i class="fas fa-robot"></i>
-            <span>Quick Message</span>
+            <span>Quick Message Simulator</span>
             <button class="chatbot-close"><i class="fas fa-times"></i></button>
         </div>
         <div class="chatbot-messages">
             <div class="chatbot-message bot">
-                <p>Hey! Leave Joel a quick message here. He'll get back to you soon!</p>
+                <p>👋 Hey! This is a demo chatbot. For real messages, use the WhatsApp button!</p>
             </div>
         </div>
         <div class="chatbot-input">
-            <textarea placeholder="Type your message... (This is a simulator)"></textarea>
+            <textarea placeholder="Type a test message... (Simulation only)" id="chatbot-input"></textarea>
             <button class="chatbot-send"><i class="fas fa-paper-plane"></i></button>
         </div>
     </div>
     <button class="chatbot-toggle">
         <i class="fas fa-comment-dots"></i>
-        <span>Leave a message</span>
+        <span>Try Chatbot Demo</span>
     </button>
 
     <!-- Navigation -->
@@ -48,7 +48,8 @@
             <div class="nav-links">
                 <a href="#about"><i class="fas fa-user"></i> About</a>
                 <a href="#experience"><i class="fas fa-briefcase"></i> Experience</a>
-                <a href="#projects"><i class="fas fa-code"></i> Projects</a>
+                <a href="#skills"><i class="fas fa-code"></i> Skills</a>
+                <a href="#projects"><i class="fas fa-project-diagram"></i> Projects</a>
                 <a href="#contact"><i class="fas fa-envelope"></i> Contact</a>
             </div>
             <button class="menu-toggle">
@@ -57,61 +58,80 @@
         </div>
     </nav>
 
-    <!-- Hero Section with Full Photo Background -->
+    <!-- Hero Section with Profile Overlay -->
     <section class="hero">
-        <div class="hero-background">
-            <img src="profile-bg.jpg" alt="Joel George Kaudzu Background" class="bg-image">
-            <div class="bg-overlay"></div>
-            <div class="bg-gradient"></div>
-        </div>
-        
+        <div class="hero-blue-bg"></div>
         <div class="container">
             <div class="hero-content">
-                <!-- Profile Photo Floating on Background -->
-                <div class="profile-photo-container">
-                    <div class="photo-frame">
-                        <img src="profile.jpg" alt="Joel George Kaudzu" class="profile-photo">
-                        <div class="photo-glow"></div>
-                        <div class="photo-badge">
-                            <i class="fas fa-medkit"></i>
+                <!-- Profile with Blue Overlay -->
+                <div class="profile-overlay-section">
+                    <div class="profile-container">
+                        <div class="profile-image-wrapper">
+                            <img src="profile.jpg" alt="Joel George Kaudzu" class="profile-image">
+                            <div class="blue-overlay"></div>
+                            <div class="profile-glow"></div>
+                        </div>
+                        <div class="profile-badges">
+                            <div class="profile-badge">
+                                <i class="fas fa-graduation-cap"></i>
+                                <span>KUHeS</span>
+                            </div>
+                            <div class="profile-badge">
+                                <i class="fas fa-heartbeat"></i>
+                                <span>Dental</span>
+                            </div>
+                            <div class="profile-badge">
+                                <i class="fas fa-code"></i>
+                                <span>Tech</span>
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Name & Titles -->
+                <!-- Text Content -->
                 <div class="hero-text">
                     <h1 class="hero-name">
-                        <span class="first-name">JOEL</span>
-                        <span class="last-name">KAUDZU</span>
+                        <span class="name-part">JOEL</span>
+                        <span class="name-part">GEORGE</span>
+                        <span class="name-part highlight">KAUDZU</span>
                     </h1>
+                    
                     <div class="title-divider">
                         <div class="divider-line"></div>
                         <i class="fas fa-star"></i>
                         <div class="divider-line"></div>
                     </div>
                     
+                    <!-- Dynamic Titles -->
                     <div class="dynamic-titles">
                         <span class="title-item active">Dental Surgery Student</span>
                         <span class="title-item">Health-Tech Innovator</span>
                         <span class="title-item">Data Privacy Lead</span>
-                        <span class="title-item">Science Coordinator</span>
+                        <span class="title-item">KUHeS Science Coordinator</span>
                         <span class="title-item">Creative Developer</span>
                     </div>
 
                     <!-- Current Roles -->
                     <div class="current-roles">
-                        <div class="role-badge">
+                        <div class="role-card">
                             <i class="fas fa-university"></i>
                             <div>
-                                <strong>Kamuzu University of Health Sciences</strong>
+                                <h4>Kamuzu University of Health Sciences</h4>
                                 <p>Bachelor of Dental Surgery</p>
                             </div>
                         </div>
-                        <div class="role-badge">
+                        <div class="role-card">
                             <i class="fas fa-briefcase"></i>
                             <div>
-                                <strong>QuantumResolve Technologies</strong>
+                                <h4>QuantumResolve Technologies</h4>
                                 <p>Data Privacy & Compliance Lead</p>
+                            </div>
+                        </div>
+                        <div class="role-card">
+                            <i class="fas fa-users"></i>
+                            <div>
+                                <h4>KUHeS Science for All</h4>
+                                <p>Elected Innovations Coordinator</p>
                             </div>
                         </div>
                     </div>
@@ -119,28 +139,28 @@
                     <!-- CTA Buttons -->
                     <div class="hero-actions">
                         <a href="#projects" class="btn btn-primary">
-                            <i class="fas fa-rocket"></i> View My Work
+                            <i class="fas fa-rocket"></i> View Projects
                         </a>
-                        <a href="#contact" class="btn btn-outline">
-                            <i class="fas fa-paper-plane"></i> Get In Touch
+                        <a href="#contact" class="btn btn-secondary">
+                            <i class="fas fa-paper-plane"></i> Contact Me
                         </a>
                     </div>
 
                     <!-- Social Links -->
                     <div class="hero-social">
-                        <a href="https://www.facebook.com/profile.php?id=61552790831710" target="_blank" class="social-link">
+                        <a href="https://www.facebook.com/profile.php?id=61552790831710" target="_blank" class="social-icon" title="Facebook">
                             <i class="fab fa-facebook-f"></i>
                         </a>
-                        <a href="https://www.instagram.com/einzmo9" target="_blank" class="social-link">
+                        <a href="https://www.instagram.com/einzmo9" target="_blank" class="social-icon" title="Instagram">
                             <i class="fab fa-instagram"></i>
                         </a>
-                        <a href="https://github.com/joelkaudzu9-ship-it" target="_blank" class="social-link">
+                        <a href="https://github.com/joelkaudzu9-ship-it" target="_blank" class="social-icon" title="GitHub">
                             <i class="fab fa-github"></i>
                         </a>
-                        <a href="https://www.linkedin.com/in/joel-kaudzu-0bba48392" target="_blank" class="social-link">
+                        <a href="https://www.linkedin.com/in/joel-kaudzu-0bba48392" target="_blank" class="social-icon" title="LinkedIn">
                             <i class="fab fa-linkedin-in"></i>
                         </a>
-                        <a href="mailto:joelkaudzu9@gmail.com" class="social-link">
+                        <a href="mailto:joelkaudzu9@gmail.com" class="social-icon" title="Email">
                             <i class="fas fa-envelope"></i>
                         </a>
                     </div>
@@ -162,41 +182,53 @@
         <div class="container">
             <h2 class="section-title">
                 <span class="title-number">01</span>
-                About Me
+                My Story & Passions
             </h2>
-            <div class="about-grid">
-                <div class="about-card">
-                    <div class="about-icon">
-                        <i class="fas fa-heartbeat"></i>
+            
+            <div class="about-content">
+                <div class="about-text">
+                    <p>I'm a dental surgery student at Kamuzu University of Health Sciences with a deep passion for innovation and technology. My journey blends medical science with digital creativity, focusing on solving real-world problems in healthcare and education.</p>
+                    
+                    <p>As the elected Science for All Innovations Coordinator at KUHeS, I lead initiatives to promote STEM and technological innovation among students. At QuantumResolve Technologies, I work as Data Privacy Lead, ensuring secure digital solutions.</p>
+                    
+                    <div class="about-highlights">
+                        <div class="highlight">
+                            <i class="fas fa-lightbulb"></i>
+                            <div>
+                                <h4>Innovation Mindset</h4>
+                                <p>Started campus businesses early and believe in learning by building.</p>
+                            </div>
+                        </div>
+                        <div class="highlight">
+                            <i class="fas fa-hands-helping"></i>
+                            <div>
+                                <h4>Teaching Experience</h4>
+                                <p>Former Math Tutor at Bright Future Academy (2024-2025).</p>
+                            </div>
+                        </div>
                     </div>
-                    <h3>Dental Surgeon in Training</h3>
-                    <p>Currently pursuing Bachelor of Dental Surgery at Kamuzu University of Health Sciences, blending medical expertise with technological innovation.</p>
                 </div>
-                <div class="about-card">
-                    <div class="about-icon">
-                        <i class="fas fa-laptop-medical"></i>
-                    </div>
-                    <h3>Health-Tech Innovator</h3>
-                    <p>Passionate about creating digital solutions that bridge healthcare gaps, focusing on education, accessibility, and patient empowerment.</p>
-                </div>
-                <div class="about-card">
-                    <div class="about-icon">
-                        <i class="fas fa-shield-alt"></i>
-                    </div>
-                    <h3>Data Privacy Specialist</h3>
-                    <p>Leading data protection strategies at QuantumResolve Technologies, ensuring secure and compliant tech solutions.</p>
-                </div>
-            </div>
-
-            <div class="about-story">
-                <h3><i class="fas fa-compass"></i> My Journey</h3>
-                <p>I am a dental surgery student with a deep curiosity for innovation and human-centered problem solving. While pursuing medicine, I actively explore programming, app development, and digital tools to address real-world challenges in education and healthcare.</p>
-                <p>My journey is shaped by a commitment to excellence, spiritual grounding, and a desire to serve communities through both medical practice and technological innovation.</p>
                 
-                <div class="fun-fact">
-                    <i class="fas fa-lightbulb"></i>
-                    <div>
-                        <strong>Fun Fact:</strong> Started campus businesses before finishing first semester, and learn best by building rather than just studying theory.
+                <div class="passions-grid">
+                    <div class="passion-card">
+                        <i class="fas fa-tooth"></i>
+                        <h4>Dental Science</h4>
+                        <p>Pursuing expertise in oral health and surgery.</p>
+                    </div>
+                    <div class="passion-card">
+                        <i class="fas fa-laptop-medical"></i>
+                        <h4>Health-Tech</h4>
+                        <p>Building digital solutions for healthcare challenges.</p>
+                    </div>
+                    <div class="passion-card">
+                        <i class="fas fa-code"></i>
+                        <h4>App Development</h4>
+                        <p>Creating educational and medical applications.</p>
+                    </div>
+                    <div class="passion-card">
+                        <i class="fas fa-pen-fancy"></i>
+                        <h4>Poetry & Writing</h4>
+                        <p>Expressive writing for healing and inspiration.</p>
                     </div>
                 </div>
             </div>
@@ -212,25 +244,23 @@
             </h2>
             
             <div class="experience-timeline">
-                <!-- Current Role -->
                 <div class="timeline-item current">
                     <div class="timeline-marker">
-                        <i class="fas fa-briefcase"></i>
+                        <i class="fas fa-shield-alt"></i>
                     </div>
                     <div class="timeline-content">
                         <div class="timeline-date">2025 - Present</div>
-                        <h3>Data Privacy and Compliance Lead</h3>
+                        <h3>Data Privacy & Compliance Lead</h3>
                         <p class="company">QuantumResolve Technologies</p>
-                        <p>Leading data protection strategies and compliance frameworks for a tech startup, ensuring secure digital solutions.</p>
+                        <p>Leading data protection strategies and compliance frameworks for tech solutions.</p>
                         <div class="timeline-tags">
                             <span class="tag">Privacy</span>
                             <span class="tag">Compliance</span>
-                            <span class="tag">Tech Strategy</span>
+                            <span class="tag">Security</span>
                         </div>
                     </div>
                 </div>
-
-                <!-- Previous Role -->
+                
                 <div class="timeline-item">
                     <div class="timeline-marker">
                         <i class="fas fa-chalkboard-teacher"></i>
@@ -239,7 +269,7 @@
                         <div class="timeline-date">2024 - 2025</div>
                         <h3>Math Tutor</h3>
                         <p class="company">Bright Future Academy</p>
-                        <p>Guided secondary school students in mathematics, developing teaching methodologies and educational content.</p>
+                        <p>Guided secondary students in mathematics, developing teaching strategies.</p>
                         <div class="timeline-tags">
                             <span class="tag">Education</span>
                             <span class="tag">Mentorship</span>
@@ -247,17 +277,16 @@
                         </div>
                     </div>
                 </div>
-
-                <!-- Leadership Role -->
+                
                 <div class="timeline-item leadership">
                     <div class="timeline-marker">
-                        <i class="fas fa-users"></i>
+                        <i class="fas fa-users-cog"></i>
                     </div>
                     <div class="timeline-content">
                         <div class="timeline-date">2023 - Present</div>
                         <h3>Science for All Innovations Coordinator</h3>
-                        <p class="company">Kamuzu University of Health Sciences (KUHeS)</p>
-                        <p>Elected student leadership role promoting science and technology innovation on campus through events, workshops, and initiatives.</p>
+                        <p class="company">Kamuzu University of Health Sciences</p>
+                        <p>Elected role promoting science and tech innovation through campus events and initiatives.</p>
                         <div class="timeline-tags">
                             <span class="tag">Leadership</span>
                             <span class="tag">Innovation</span>
@@ -278,33 +307,31 @@
             </h2>
             
             <div class="skills-grid">
-                <!-- Technical Skills -->
                 <div class="skill-category">
-                    <h3><i class="fas fa-code"></i> Technical Skills</h3>
+                    <h3><i class="fas fa-laptop-code"></i> Technical Skills</h3>
                     <div class="skill-tags">
                         <span class="skill-tag"><i class="fab fa-python"></i> Python</span>
                         <span class="skill-tag"><i class="fas fa-mobile-alt"></i> MIT App Inventor</span>
                         <span class="skill-tag"><i class="fas fa-fire"></i> Firebase</span>
                         <span class="skill-tag"><i class="fas fa-flask"></i> Flask</span>
                         <span class="skill-tag"><i class="fab fa-git-alt"></i> Git & GitHub</span>
-                        <span class="skill-tag"><i class="fas fa-shield-alt"></i> Data Privacy</span>
-                        <span class="skill-tag"><i class="fas fa-file-word"></i> Microsoft Office</span>
-                        <span class="skill-tag"><i class="fas fa-palette"></i> UI/UX Design</span>
+                        <span class="skill-tag"><i class="fas fa-database"></i> Data Privacy</span>
+                        <span class="skill-tag"><i class="fas fa-file-alt"></i> Microsoft Office</span>
+                        <span class="skill-tag"><i class="fas fa-paint-brush"></i> UI/UX Design</span>
                     </div>
                 </div>
-
-                <!-- Professional Skills -->
+                
                 <div class="skill-category">
-                    <h3><i class="fas fa-brain"></i> Professional Skills</h3>
+                    <h3><i class="fas fa-user-graduate"></i> Professional Skills</h3>
                     <div class="skill-tags">
                         <span class="skill-tag">Critical Thinking</span>
-                        <span class="skill-tag">Clear Communication</span>
+                        <span class="skill-tag">Communication</span>
                         <span class="skill-tag">Problem Solving</span>
                         <span class="skill-tag">Project Management</span>
                         <span class="skill-tag">Team Leadership</span>
                         <span class="skill-tag">Mentorship</span>
                         <span class="skill-tag">Adaptability</span>
-                        <span class="skill-tag">Research & Analysis</span>
+                        <span class="skill-tag">Research</span>
                     </div>
                 </div>
             </div>
@@ -320,66 +347,48 @@
             </h2>
             
             <div class="projects-grid">
-                <!-- Project 1 -->
                 <div class="project-card">
-                    <div class="project-header">
-                        <span class="project-badge dental"><i class="fas fa-tooth"></i> Dental Tech</span>
-                        <span class="project-status">In Development</span>
+                    <div class="project-badge dental">
+                        <i class="fas fa-tooth"></i> Dental Tech
                     </div>
                     <h3>CheckMySmile</h3>
-                    <p class="project-description">Educational dental app helping users understand oral health, hygiene practices, and common dental conditions in a student-friendly way.</p>
-                    
+                    <p class="project-desc">Educational app for oral health awareness and dental hygiene practices.</p>
                     <div class="project-tech">
-                        <span><i class="fas fa-mobile-alt"></i> MIT App Inventor</span>
-                        <span><i class="fas fa-fire"></i> Firebase</span>
+                        <span>MIT App Inventor</span>
+                        <span>Firebase</span>
                     </div>
-                    
-                    <div class="project-links">
-                        <a href="https://youtu.be/XfdkxzoQw9Q?si=4SnVrXsJCkfOZTCB" target="_blank" class="project-link">
-                            <i class="fas fa-play-circle"></i> Demo Video
-                        </a>
-                    </div>
+                    <a href="https://youtu.be/XfdkxzoQw9Q" target="_blank" class="project-link">
+                        <i class="fas fa-play-circle"></i> Watch Demo
+                    </a>
                 </div>
-
-                <!-- Project 2 -->
+                
                 <div class="project-card">
-                    <div class="project-header">
-                        <span class="project-badge creative"><i class="fas fa-pen-fancy"></i> Creative Tech</span>
-                        <span class="project-status">Concept</span>
+                    <div class="project-badge creative">
+                        <i class="fas fa-pen-fancy"></i> Creative Tech
                     </div>
                     <h3>Poetry Quote App</h3>
-                    <p class="project-description">App that extracts standout lines from poems and presents them as daily motivational quotes, merging creativity with technology.</p>
-                    
+                    <p class="project-desc">App extracting meaningful lines from poems as daily motivational quotes.</p>
                     <div class="project-tech">
-                        <span><i class="fab fa-python"></i> Python</span>
+                        <span>Python</span>
                     </div>
-                    
-                    <div class="project-links">
-                        <a href="#" class="project-link coming-soon">
-                            <i class="fas fa-lightbulb"></i> Concept Details
-                        </a>
-                    </div>
+                    <a href="#" class="project-link coming-soon">
+                        <i class="fas fa-lightbulb"></i> Concept Stage
+                    </a>
                 </div>
-
-                <!-- Project 3 -->
+                
                 <div class="project-card">
-                    <div class="project-header">
-                        <span class="project-badge edtech"><i class="fas fa-university"></i> EdTech</span>
-                        <span class="project-status">Concept</span>
+                    <div class="project-badge edtech">
+                        <i class="fas fa-university"></i> EdTech
                     </div>
                     <h3>KUHeS Campus Connect</h3>
-                    <p class="project-description">Campus platform for students to follow affairs, create discussions, view calendars, and foster academic community.</p>
-                    
+                    <p class="project-desc">Platform for student discussions, events, and academic community building.</p>
                     <div class="project-tech">
-                        <span><i class="fas fa-mobile-alt"></i> MIT App Inventor</span>
-                        <span><i class="fas fa-fire"></i> Firebase</span>
+                        <span>MIT App Inventor</span>
+                        <span>Firebase</span>
                     </div>
-                    
-                    <div class="project-links">
-                        <a href="#" class="project-link coming-soon">
-                            <i class="fas fa-file-alt"></i> Project Brief
-                        </a>
-                    </div>
+                    <a href="#" class="project-link coming-soon">
+                        <i class="fas fa-file-alt"></i> Project Brief
+                    </a>
                 </div>
             </div>
         </div>
@@ -393,61 +402,58 @@
                 Let's Connect
             </h2>
             
-            <div class="contact-grid">
-                <!-- Contact Info -->
+            <div class="contact-content">
                 <div class="contact-info">
                     <h3><i class="fas fa-paper-plane"></i> Get In Touch</h3>
-                    <p>I'm always open to discussing health-tech innovations, dental science, or potential collaborations.</p>
+                    <p>Interested in health-tech, dental innovation, or collaboration? Reach out!</p>
                     
-                    <div class="contact-details">
-                        <a href="mailto:joelkaudzu9@gmail.com" class="contact-item">
+                    <div class="contact-methods">
+                        <a href="mailto:joelkaudzu9@gmail.com" class="contact-method">
                             <i class="fas fa-envelope"></i>
                             <div>
-                                <strong>Email</strong>
+                                <h4>Email</h4>
                                 <p>joelkaudzu9@gmail.com</p>
                             </div>
                         </a>
                         
-                        <a href="https://github.com/joelkaudzu9-ship-it" target="_blank" class="contact-item">
+                        <a href="https://github.com/joelkaudzu9-ship-it" target="_blank" class="contact-method">
                             <i class="fab fa-github"></i>
                             <div>
-                                <strong>GitHub</strong>
+                                <h4>GitHub</h4>
                                 <p>@joelkaudzu9-ship-it</p>
                             </div>
                         </a>
                         
-                        <a href="https://www.linkedin.com/in/joel-kaudzu-0bba48392" target="_blank" class="contact-item">
+                        <a href="https://www.linkedin.com/in/joel-kaudzu-0bba48392" target="_blank" class="contact-method">
                             <i class="fab fa-linkedin"></i>
                             <div>
-                                <strong>LinkedIn</strong>
+                                <h4>LinkedIn</h4>
                                 <p>Joel Kaudzu</p>
                             </div>
                         </a>
                     </div>
                 </div>
-
-                <!-- Social Links Card -->
-                <div class="social-card">
+                
+                <div class="social-links">
                     <h3><i class="fas fa-share-alt"></i> Follow Me</h3>
-                    <div class="social-links">
-                        <a href="https://www.facebook.com/profile.php?id=61552790831710" target="_blank" class="social-button facebook">
+                    <div class="social-buttons">
+                        <a href="https://www.facebook.com/profile.php?id=61552790831710" target="_blank" class="social-btn facebook">
                             <i class="fab fa-facebook-f"></i>
-                            <span>Facebook</span>
+                            Facebook
                         </a>
-                        <a href="https://www.instagram.com/einzmo9" target="_blank" class="social-button instagram">
+                        <a href="https://www.instagram.com/einzmo9" target="_blank" class="social-btn instagram">
                             <i class="fab fa-instagram"></i>
-                            <span>Instagram</span>
+                            Instagram
                         </a>
-                        <a href="https://github.com/joelkaudzu9-ship-it" target="_blank" class="social-button github">
-                            <i class="fab fa-github"></i>
-                            <span>GitHub</span>
+                        <a href="https://wa.me/265YOUR-NUMBER-HERE" target="_blank" class="social-btn whatsapp">
+                            <i class="fab fa-whatsapp"></i>
+                            WhatsApp
                         </a>
                     </div>
                 </div>
             </div>
             
-            <!-- Quote -->
-            <div class="contact-quote">
+            <div class="quote-box">
                 <i class="fas fa-quote-left"></i>
                 <p>"Blending science, technology, and creativity to build solutions that heal, educate, and inspire."</p>
                 <div class="quote-author">— Joel George Kaudzu</div>
@@ -460,11 +466,11 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-brand">
-                    <span class="footer-logo">JGK</span>
+                    <div class="footer-logo">JGK</div>
                     <h3>Joel George Kaudzu</h3>
                 </div>
                 
-                <div class="footer-links">
+                <div class="footer-nav">
                     <a href="#about">About</a>
                     <a href="#experience">Experience</a>
                     <a href="#projects">Projects</a>
@@ -473,7 +479,7 @@
                 
                 <div class="footer-copyright">
                     <p>&copy; <span id="currentYear"></span> Joel George Kaudzu. All rights reserved.</p>
-                    <p class="footer-tagline">Dental Student | Health-Tech Innovator | From Malawi 🇲🇼</p>
+                    <p>Dental Student | Health-Tech Innovator | From Malawi 🇲🇼</p>
                 </div>
             </div>
         </div>
