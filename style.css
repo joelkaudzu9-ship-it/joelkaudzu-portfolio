@@ -1,4 +1,4 @@
-/* CSS Reset & Base */
+/* Reset & Base */
 * {
     margin: 0;
     padding: 0;
@@ -16,7 +16,7 @@
     --gray: #1a1a1a;
     --light-gray: #e0e0e0;
     --white: #ffffff;
-    --overlay: rgba(26, 35, 126, 0.85);
+    --blue-overlay: rgba(26, 35, 126, 0.7);
     --glow: rgba(79, 195, 247, 0.6);
 }
 
@@ -34,7 +34,7 @@ body {
     padding: 0 20px;
 }
 
-/* WhatsApp Float Button */
+/* WhatsApp Button */
 .whatsapp-float {
     position: fixed;
     bottom: 30px;
@@ -82,7 +82,7 @@ body {
     50% { transform: translateY(-10px); }
 }
 
-/* Chatbot Simulator */
+/* Chatbot */
 .chatbot-container {
     position: fixed;
     bottom: 100px;
@@ -262,47 +262,24 @@ body {
     cursor: pointer;
 }
 
-/* Hero Section - Full Photo Background */
+/* Hero Section - Profile with Blue Overlay */
 .hero {
     min-height: 100vh;
     position: relative;
     display: flex;
     align-items: center;
     padding-top: 80px;
+    overflow: hidden;
 }
 
-.hero-background {
+.hero-blue-bg {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    z-index: -1;
-}
-
-.bg-image {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
-}
-
-.bg-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: var(--overlay);
-}
-
-.bg-gradient {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 50%;
-    background: linear-gradient(to top, var(--dark-gray), transparent);
+    background: linear-gradient(135deg, var(--dark-blue) 0%, var(--primary-blue) 100%);
+    z-index: -2;
 }
 
 .hero-content {
@@ -314,81 +291,110 @@ body {
     z-index: 2;
 }
 
-.profile-photo-container {
+/* Profile with Blue Overlay */
+.profile-overlay-section {
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.photo-frame {
+.profile-container {
     position: relative;
-    width: 300px;
-    height: 300px;
+    width: 350px;
+    height: 350px;
+}
+
+.profile-image-wrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
     border-radius: 50%;
     overflow: hidden;
     border: 5px solid rgba(255, 255, 255, 0.1);
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
 }
 
-.profile-photo {
+.profile-image {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 0.5s;
+    filter: grayscale(20%);
+    transition: all 0.5s ease;
 }
 
-.photo-frame:hover .profile-photo {
-    transform: scale(1.05);
-}
-
-.photo-glow {
+.blue-overlay {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
+    background: var(--blue-overlay);
+    mix-blend-mode: multiply;
+    opacity: 0.7;
+    transition: opacity 0.3s;
+}
+
+.profile-image-wrapper:hover .blue-overlay {
+    opacity: 0.5;
+}
+
+.profile-image-wrapper:hover .profile-image {
+    transform: scale(1.05);
+    filter: grayscale(0%);
+}
+
+.profile-glow {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
     background: radial-gradient(circle at center, transparent 30%, var(--glow) 70%);
     opacity: 0.3;
     animation: pulse 3s ease-in-out infinite;
 }
 
-.photo-badge {
+.profile-badges {
     position: absolute;
-    bottom: 20px;
-    right: 20px;
-    background: var(--electric-blue);
-    color: white;
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
+    bottom: -20px;
+    left: 50%;
+    transform: translateX(-50%);
     display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.5rem;
-    border: 3px solid white;
+    gap: 1rem;
+    z-index: 3;
 }
 
+.profile-badge {
+    background: var(--electric-blue);
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    box-shadow: 0 5px 15px rgba(41, 121, 255, 0.3);
+}
+
+/* Hero Text */
 .hero-text {
     color: var(--white);
 }
 
 .hero-name {
     font-family: 'Playfair Display', serif;
-    font-size: 4rem;
+    font-size: 3.5rem;
     line-height: 1.1;
     margin-bottom: 1rem;
 }
 
-.first-name, .last-name {
+.name-part {
     display: block;
 }
 
-.first-name {
-    color: var(--white);
-    font-weight: 700;
-}
-
-.last-name {
+.name-part.highlight {
     color: var(--cyber-blue);
     font-weight: 800;
     letter-spacing: 2px;
@@ -444,7 +450,7 @@ body {
     gap: 1rem;
 }
 
-.role-badge {
+.role-card {
     display: flex;
     align-items: center;
     gap: 1rem;
@@ -452,11 +458,27 @@ body {
     background: rgba(255, 255, 255, 0.05);
     border-radius: 10px;
     border-left: 3px solid var(--electric-blue);
+    transition: transform 0.3s;
 }
 
-.role-badge i {
+.role-card:hover {
+    transform: translateX(10px);
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.role-card i {
     color: var(--cyber-blue);
-    font-size: 1.2rem;
+    font-size: 1.5rem;
+}
+
+.role-card h4 {
+    font-size: 1rem;
+    margin-bottom: 0.2rem;
+}
+
+.role-card p {
+    color: var(--light-gray);
+    font-size: 0.9rem;
 }
 
 .hero-actions {
@@ -487,13 +509,13 @@ body {
     box-shadow: 0 10px 20px rgba(41, 121, 255, 0.3);
 }
 
-.btn-outline {
+.btn-secondary {
     background: transparent;
     color: white;
     border: 2px solid white;
 }
 
-.btn-outline:hover {
+.btn-secondary:hover {
     background: white;
     color: var(--black);
 }
@@ -504,7 +526,7 @@ body {
     margin-top: 2rem;
 }
 
-.social-link {
+.social-icon {
     width: 45px;
     height: 45px;
     border-radius: 50%;
@@ -517,7 +539,7 @@ body {
     transition: all 0.3s;
 }
 
-.social-link:hover {
+.social-icon:hover {
     background: var(--electric-blue);
     transform: translateY(-3px);
 }
@@ -557,10 +579,9 @@ body {
     100% { top: 30px; opacity: 0; }
 }
 
-/* Section Styling */
+/* Sections */
 section {
     padding: 5rem 0;
-    position: relative;
 }
 
 .section-title {
@@ -586,48 +607,63 @@ section {
 }
 
 /* About Section */
-.about-grid {
+.about-content {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
-    margin-bottom: 3rem;
+    grid-template-columns: 2fr 1fr;
+    gap: 3rem;
 }
 
-.about-card {
+.about-text p {
+    margin-bottom: 1.5rem;
+    font-size: 1.1rem;
+    color: var(--light-gray);
+}
+
+.about-highlights {
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.highlight {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
     background: rgba(255, 255, 255, 0.03);
-    padding: 2rem;
-    border-radius: 15px;
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    transition: transform 0.3s;
+    border-radius: 10px;
 }
 
-.about-card:hover {
+.highlight i {
+    color: var(--cyber-blue);
+    font-size: 1.5rem;
+}
+
+.passions-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+}
+
+.passion-card {
+    background: rgba(255, 255, 255, 0.03);
+    padding: 1.5rem;
+    border-radius: 10px;
+    text-align: center;
+    transition: transform 0.3s;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.passion-card:hover {
     transform: translateY(-5px);
     border-color: var(--electric-blue);
 }
 
-.about-icon {
-    font-size: 2.5rem;
+.passion-card i {
+    font-size: 2rem;
     color: var(--cyber-blue);
     margin-bottom: 1rem;
-}
-
-.about-story {
-    background: rgba(255, 255, 255, 0.03);
-    padding: 2.5rem;
-    border-radius: 15px;
-    margin-top: 3rem;
-}
-
-.fun-fact {
-    background: rgba(79, 195, 247, 0.1);
-    padding: 1rem;
-    border-radius: 10px;
-    margin-top: 1.5rem;
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    border-left: 3px solid var(--accent);
 }
 
 /* Experience Section */
@@ -667,6 +703,16 @@ section {
     z-index: 2;
 }
 
+.timeline-item.current .timeline-marker {
+    background: var(--electric-blue);
+    color: white;
+}
+
+.timeline-item.leadership .timeline-marker {
+    border-color: #9c27b0;
+    color: #9c27b0;
+}
+
 .timeline-content {
     flex: 1;
     margin-left: 2rem;
@@ -679,6 +725,11 @@ section {
 .timeline-item.current .timeline-content {
     border-color: var(--electric-blue);
     background: rgba(41, 121, 255, 0.05);
+}
+
+.timeline-item.leadership .timeline-content {
+    border-color: #9c27b0;
+    background: rgba(156, 39, 176, 0.05);
 }
 
 .timeline-date {
@@ -722,11 +773,18 @@ section {
     border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
+.skill-category h3 {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    color: var(--cyber-blue);
+}
+
 .skill-tags {
     display: flex;
     flex-wrap: wrap;
     gap: 0.8rem;
-    margin-top: 1rem;
 }
 
 .skill-tag {
@@ -759,6 +817,8 @@ section {
     border-radius: 15px;
     border: 1px solid rgba(255, 255, 255, 0.05);
     transition: all 0.3s;
+    position: relative;
+    overflow: hidden;
 }
 
 .project-card:hover {
@@ -767,18 +827,17 @@ section {
     box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
 }
 
-.project-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 1rem;
-}
-
 .project-badge {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
     padding: 0.3rem 0.8rem;
     border-radius: 15px;
     font-size: 0.8rem;
     font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
 }
 
 .project-badge.dental {
@@ -796,19 +855,21 @@ section {
     color: #4caf50;
 }
 
-.project-status {
-    background: rgba(255, 193, 7, 0.2);
-    color: #ffc107;
-    padding: 0.3rem 0.8rem;
-    border-radius: 15px;
-    font-size: 0.8rem;
-    font-weight: 600;
+.project-card h3 {
+    margin: 0.5rem 0 1rem;
+    font-size: 1.5rem;
+}
+
+.project-desc {
+    color: var(--light-gray);
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
 }
 
 .project-tech {
     display: flex;
     gap: 1rem;
-    margin: 1rem 0;
+    margin: 1.5rem 0;
     flex-wrap: wrap;
 }
 
@@ -818,13 +879,6 @@ section {
     padding: 0.5rem 1rem;
     border-radius: 15px;
     font-size: 0.9rem;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-}
-
-.project-links {
-    margin-top: 1.5rem;
 }
 
 .project-link {
@@ -847,28 +901,35 @@ section {
 }
 
 /* Contact Section */
-.contact-grid {
+.contact-content {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 3rem;
     margin-bottom: 3rem;
 }
 
-.contact-info, .social-card {
+.contact-info, .social-links {
     background: rgba(255, 255, 255, 0.03);
     padding: 2rem;
     border-radius: 15px;
     border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
-.contact-details {
+.contact-info h3, .social-links h3 {
+    margin-bottom: 1.5rem;
     display: flex;
-    flex-direction: column;
+    align-items: center;
     gap: 1rem;
-    margin-top: 1.5rem;
+    color: var(--cyber-blue);
 }
 
-.contact-item {
+.contact-methods {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.contact-method {
     display: flex;
     align-items: center;
     gap: 1rem;
@@ -879,23 +940,32 @@ section {
     transition: background 0.3s;
 }
 
-.contact-item:hover {
+.contact-method:hover {
     background: rgba(255, 255, 255, 0.05);
 }
 
-.contact-item i {
+.contact-method i {
     color: var(--cyber-blue);
-    font-size: 1.2rem;
+    font-size: 1.5rem;
 }
 
-.social-links {
+.contact-method h4 {
+    margin-bottom: 0.3rem;
+    font-size: 1rem;
+}
+
+.contact-method p {
+    color: var(--light-gray);
+    font-size: 0.9rem;
+}
+
+.social-buttons {
     display: flex;
     flex-direction: column;
     gap: 1rem;
-    margin-top: 1.5rem;
 }
 
-.social-button {
+.social-btn {
     display: flex;
     align-items: center;
     gap: 1rem;
@@ -906,26 +976,26 @@ section {
     transition: transform 0.3s;
 }
 
-.social-button:hover {
+.social-btn:hover {
     transform: translateX(10px);
 }
 
-.social-button.facebook {
+.social-btn.facebook {
     background: rgba(59, 89, 152, 0.2);
     border-left: 4px solid #3b5998;
 }
 
-.social-button.instagram {
+.social-btn.instagram {
     background: rgba(225, 48, 108, 0.2);
     border-left: 4px solid #e1306c;
 }
 
-.social-button.github {
-    background: rgba(24, 23, 23, 0.2);
-    border-left: 4px solid #181717;
+.social-btn.whatsapp {
+    background: rgba(37, 211, 102, 0.2);
+    border-left: 4px solid #25d366;
 }
 
-.contact-quote {
+.quote-box {
     text-align: center;
     padding: 3rem;
     background: rgba(255, 255, 255, 0.03);
@@ -934,7 +1004,7 @@ section {
     position: relative;
 }
 
-.contact-quote i:first-child {
+.quote-box i:first-child {
     position: absolute;
     top: 1rem;
     left: 2rem;
@@ -984,19 +1054,19 @@ section {
     font-size: 1.5rem;
 }
 
-.footer-links {
+.footer-nav {
     display: flex;
     gap: 2rem;
     flex-wrap: wrap;
 }
 
-.footer-links a {
+.footer-nav a {
     color: var(--light-gray);
     text-decoration: none;
     transition: color 0.3s;
 }
 
-.footer-links a:hover {
+.footer-nav a:hover {
     color: var(--cyber-blue);
 }
 
@@ -1004,13 +1074,13 @@ section {
     text-align: center;
 }
 
-.footer-tagline {
+.footer-copyright p:last-child {
     color: var(--cyber-blue);
     font-weight: 500;
     margin-top: 0.5rem;
 }
 
-/* Responsive Design */
+/* Responsive */
 @media (max-width: 992px) {
     .hero-content {
         grid-template-columns: 1fr;
@@ -1018,9 +1088,9 @@ section {
         gap: 3rem;
     }
     
-    .photo-frame {
-        width: 250px;
-        height: 250px;
+    .profile-container {
+        width: 300px;
+        height: 300px;
         margin: 0 auto;
     }
     
@@ -1028,13 +1098,8 @@ section {
         font-size: 3rem;
     }
     
-    .current-roles {
-        align-items: center;
-    }
-    
-    .role-badge {
-        max-width: 400px;
-        margin: 0 auto;
+    .about-content {
+        grid-template-columns: 1fr;
     }
 }
 
@@ -1067,8 +1132,12 @@ section {
         font-size: 2.5rem;
     }
     
-    .dynamic-titles {
-        height: 60px;
+    .current-roles {
+        align-items: center;
+    }
+    
+    .role-card {
+        max-width: 400px;
     }
     
     .chatbot-container {
@@ -1106,8 +1175,8 @@ section {
         flex-direction: column;
     }
     
-    .photo-frame {
-        width: 200px;
-        height: 200px;
+    .profile-container {
+        width: 250px;
+        height: 250px;
     }
 }
