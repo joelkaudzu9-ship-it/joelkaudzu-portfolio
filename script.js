@@ -1,9 +1,9 @@
 // DOM Ready
 document.addEventListener('DOMContentLoaded', function() {
-    // Set current year in footer
+    // Set current year
     document.getElementById('currentYear').textContent = new Date().getFullYear();
     
-    // Mobile menu toggle
+    // Mobile Menu Toggle
     const menuToggle = document.querySelector('.menu-toggle');
     const navLinks = document.querySelector('.nav-links');
     
@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
-    // Close mobile menu when clicking a link
+    // Close mobile menu on link click
     document.querySelectorAll('.nav-links a').forEach(link => {
         link.addEventListener('click', () => {
             navLinks.classList.remove('active');
@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
-    // Smooth scrolling for navigation links
+    // Smooth Scrolling
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
             e.preventDefault();
@@ -42,114 +42,118 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
-    // Navbar scroll effect
+    // Dynamic Titles Animation
+    const titles = document.querySelectorAll('.title-item');
+    let currentTitle = 0;
+    
+    function rotateTitles() {
+        titles.forEach(title => title.classList.remove('active'));
+        titles[currentTitle].classList.add('active');
+        
+        currentTitle = (currentTitle + 1) % titles.length;
+    }
+    
+    // Start rotating every 3 seconds
+    setInterval(rotateTitles, 3000);
+    
+    // Navbar Scroll Effect
     window.addEventListener('scroll', () => {
         const navbar = document.querySelector('.navbar');
         if (window.scrollY > 100) {
-            navbar.classList.add('scrolled');
+            navbar.style.background = 'rgba(10, 10, 10, 0.98)';
+            navbar.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.3)';
         } else {
-            navbar.classList.remove('scrolled');
-        }
-        
-        // Back to top button
-        const backToTop = document.querySelector('.back-to-top');
-        if (window.scrollY > 500) {
-            backToTop.classList.add('visible');
-        } else {
-            backToTop.classList.remove('visible');
+            navbar.style.background = 'rgba(10, 10, 10, 0.95)';
+            navbar.style.boxShadow = 'none';
         }
     });
     
-    // Back to top button
-    const backToTop = document.querySelector('.back-to-top');
-    backToTop.addEventListener('click', () => {
-        window.scrollTo({
-            top: 0,
-            behavior: 'smooth'
+    // Chatbot Functionality
+    const chatbotToggle = document.querySelector('.chatbot-toggle');
+    const chatbotContainer = document.querySelector('.chatbot-container');
+    const chatbotClose = document.querySelector('.chatbot-close');
+    const chatbotSend = document.querySelector('.chatbot-send');
+    const chatbotInput = document.querySelector('.chatbot-input textarea');
+    const chatbotMessages = document.querySelector('.chatbot-messages');
+    
+    if (chatbotToggle && chatbotContainer) {
+        // Toggle chatbot
+        chatbotToggle.addEventListener('click', () => {
+            chatbotContainer.classList.toggle('active');
         });
-    });
-    
-    // Typing effect for hero subtitle
-    const typingText = document.querySelector('.typing-text');
-    const texts = [
-        'Dental Surgery Student',
-        'Health-Tech Innovator',
-        'Creative Developer',
-        'Poet & Writer',
-        'Problem Solver'
-    ];
-    let textIndex = 0;
-    let charIndex = 0;
-    let isDeleting = false;
-    let typingSpeed = 100;
-    
-    function typeEffect() {
-        const currentText = texts[textIndex];
         
-        if (isDeleting) {
-            typingText.textContent = currentText.substring(0, charIndex - 1);
-            charIndex--;
-            typingSpeed = 50;
-        } else {
-            typingText.textContent = currentText.substring(0, charIndex + 1);
-            charIndex++;
-            typingSpeed = 100;
+        // Close chatbot
+        chatbotClose.addEventListener('click', () => {
+            chatbotContainer.classList.remove('active');
+        });
+        
+        // Send message
+        chatbotSend.addEventListener('click', sendChatbotMessage);
+        chatbotInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter' && !e.shiftKey) {
+                e.preventDefault();
+                sendChatbotMessage();
+            }
+        });
+        
+        function sendChatbotMessage() {
+            const message = chatbotInput.value.trim();
+            if (message) {
+                // Add user message
+                const userMessage = document.createElement('div');
+                userMessage.className = 'chatbot-message';
+                userMessage.innerHTML = `<p>${message}</p>`;
+                chatbotMessages.appendChild(userMessage);
+                
+                // Clear input
+                chatbotInput.value = '';
+                
+                // Auto-reply after delay
+                setTimeout(() => {
+                    const replies = [
+                        "Thanks for your message! This is a demo chatbot. Joel will get back to you via email or WhatsApp.",
+                        "Message received! This simulator shows interactive features. Contact Joel directly for real conversations.",
+                        "Nice message! This is just for demonstration. Use the WhatsApp button for instant messaging with Joel."
+                    ];
+                    
+                    const botMessage = document.createElement('div');
+                    botMessage.className = 'chatbot-message bot';
+                    botMessage.innerHTML = `<p>${replies[Math.floor(Math.random() * replies.length)]}</p>`;
+                    chatbotMessages.appendChild(botMessage);
+                    
+                    // Scroll to bottom
+                    chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+                }, 1000);
+                
+                // Scroll to bottom
+                chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+            }
         }
-        
-        if (!isDeleting && charIndex === currentText.length) {
-            isDeleting = true;
-            typingSpeed = 1500; // Pause at end
-        } else if (isDeleting && charIndex === 0) {
-            isDeleting = false;
-            textIndex = (textIndex + 1) % texts.length;
-            typingSpeed = 500; // Pause before typing next
-        }
-        
-        setTimeout(typeEffect, typingSpeed);
     }
     
-    // Start typing effect after page loads
-    setTimeout(typeEffect, 1000);
+    // WhatsApp number placeholder
+    const whatsappBtn = document.querySelector('.whatsapp-float');
+    if (whatsappBtn) {
+        // Replace with your actual WhatsApp number
+        // Format: https://wa.me/265XXXXXXXXX (Malawi code + number without +)
+        whatsappBtn.href = "https://wa.me/265YOUR-NUMBER-HERE?text=Hi%20Joel,%20I%20saw%20your%20portfolio!";
+    }
     
-    // 3D card hover effects
-    document.querySelectorAll('.card-3d, .card-hover-3d').forEach(card => {
-        card.addEventListener('mousemove', (e) => {
-            const rect = card.getBoundingClientRect();
-            const x = e.clientX - rect.left;
-            const y = e.clientY - rect.top;
-            
-            const centerX = rect.width / 2;
-            const centerY = rect.height / 2;
-            
-            const rotateY = (x - centerX) / 25;
-            const rotateX = (centerY - y) / 25;
-            
-            card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateZ(10px)`;
-        });
-        
-        card.addEventListener('mouseleave', () => {
-            card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateZ(0)';
-            setTimeout(() => {
-                card.style.transform = '';
-            }, 300);
-        });
-    });
-    
-    // Glow effects on hover
-    document.querySelectorAll('.card-glow').forEach(card => {
+    // Hover effects for cards
+    document.querySelectorAll('.project-card, .about-card, .contact-item').forEach(card => {
         card.addEventListener('mouseenter', function() {
-            this.style.boxShadow = '0 15px 40px rgba(79, 195, 247, 0.2)';
+            this.style.transform = 'translateY(-5px)';
         });
         
         card.addEventListener('mouseleave', function() {
-            this.style.boxShadow = '';
+            this.style.transform = 'translateY(0)';
         });
     });
     
     // Skill tags animation
     document.querySelectorAll('.skill-tag').forEach(tag => {
         tag.addEventListener('mouseenter', function() {
-            this.style.transform = 'translateY(-5px) scale(1.05)';
+            this.style.transform = 'translateY(-3px) scale(1.05)';
         });
         
         tag.addEventListener('mouseleave', function() {
@@ -157,44 +161,10 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
-    // Project links animation
-    document.querySelectorAll('.project-link').forEach(link => {
-        link.addEventListener('mouseenter', function() {
-            if (!this.classList.contains('coming-soon')) {
-                this.style.transform = 'translateY(-3px)';
-            }
-        });
-        
-        link.addEventListener('mouseleave', function() {
-            this.style.transform = 'translateY(0)';
-        });
-    });
-    
-    // Social icons animation
-    document.querySelectorAll('.social-icon').forEach(icon => {
-        icon.addEventListener('mouseenter', function() {
-            if (!this.classList.contains('coming-soon')) {
-                const icon = this.querySelector('i');
-                icon.style.transform = 'scale(1.2) rotate(10deg)';
-            }
-        });
-        
-        icon.addEventListener('mouseleave', function() {
-            const icon = this.querySelector('i');
-            icon.style.transform = 'scale(1) rotate(0)';
-        });
-    });
-    
-    // Photo frame continuous rotation
-    const photoFrame = document.querySelector('.photo-frame');
-    if (photoFrame) {
-        let rotation = 0;
-        function rotateFrame() {
-            rotation = (rotation + 0.2) % 360;
-            photoFrame.style.transform = `rotate(${rotation}deg)`;
-            requestAnimationFrame(rotateFrame);
-        }
-        rotateFrame();
+    // Photo glow effect
+    const photoGlow = document.querySelector('.photo-glow');
+    if (photoGlow) {
+        photoGlow.style.animation = 'pulse 3s ease-in-out infinite';
     }
     
     // Scroll reveal animations
@@ -206,69 +176,33 @@ document.addEventListener('DOMContentLoaded', function() {
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                entry.target.classList.add('animate-in');
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateY(0)';
             }
         });
     }, observerOptions);
     
-    // Observe sections
-    document.querySelectorAll('section').forEach(section => {
-        section.classList.add('fade-in');
-        observer.observe(section);
+    // Observe elements for animation
+    document.querySelectorAll('.about-card, .project-card, .timeline-item, .skill-category').forEach(el => {
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(20px)';
+        el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+        observer.observe(el);
     });
     
-    // Add fade-in class to cards
-    document.querySelectorAll('.card-3d, .card-hover-3d, .card-glow').forEach(card => {
-        card.classList.add('fade-in');
-        observer.observe(card);
-    });
-    
-    // CSS for fade-in animation
-    const style = document.createElement('style');
-    style.textContent = `
-        .fade-in {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.8s ease, transform 0.8s ease;
-        }
-        
-        .fade-in.animate-in {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        
-        .fade-in:nth-child(1) { transition-delay: 0.1s; }
-        .fade-in:nth-child(2) { transition-delay: 0.2s; }
-        .fade-in:nth-child(3) { transition-delay: 0.3s; }
-        .fade-in:nth-child(4) { transition-delay: 0.4s; }
-        .fade-in:nth-child(5) { transition-delay: 0.5s; }
-    `;
-    document.head.appendChild(style);
-    
-    // Prevent click on coming soon items
-    document.querySelectorAll('.coming-soon').forEach(item => {
-        item.addEventListener('click', (e) => {
-            e.preventDefault();
-            // Optional: Show a tooltip or message
-            console.log('Coming soon!');
-        });
-    });
-    
-    // Add subtle parallax effect to hero
-    window.addEventListener('scroll', () => {
-        const scrolled = window.pageYOffset;
-        const rate = scrolled * -0.5;
-        const hero = document.querySelector('.hero');
-        if (hero) {
-            hero.style.transform = `translateY(${rate}px)`;
-        }
-    });
-    
-    // Initialize everything
+    // Initialize
     console.log('Portfolio loaded successfully! 🚀');
+    
+    // Auto-start title rotation
+    rotateTitles();
 });
 
-// Page load animations
-window.addEventListener('load', () => {
-    document.body.classList.add('loaded');
-});
+// Add CSS for pulse animation if not in style.css
+const pulseStyle = document.createElement('style');
+pulseStyle.textContent = `
+    @keyframes pulse {
+        0%, 100% { opacity: 0.3; }
+        50% { opacity: 0.6; }
+    }
+`;
+document.head.appendChild(pulseStyle);
